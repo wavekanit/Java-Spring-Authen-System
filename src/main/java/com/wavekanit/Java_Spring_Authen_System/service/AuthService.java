@@ -1,19 +1,19 @@
 package com.wavekanit.Java_Spring_Authen_System.service;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginRequest;
-import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginResponse;
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Login.UserLoginRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Login.UserLoginResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterResponse;
 import com.wavekanit.Java_Spring_Authen_System.model.UserModel;
 import com.wavekanit.Java_Spring_Authen_System.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class AuthService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

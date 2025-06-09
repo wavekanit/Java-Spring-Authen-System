@@ -1,20 +1,20 @@
 package com.wavekanit.Java_Spring_Authen_System.controller;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginRequest;
-import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginResponse;
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterResponse;
-import com.wavekanit.Java_Spring_Authen_System.service.UserService;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Login.UserLoginRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Login.UserLoginResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterResponse;
+import com.wavekanit.Java_Spring_Authen_System.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
-public class UserController {
-    private final UserService userService;
+public class AuthController {
+    private final AuthService userService;
 
-    public UserController(UserService userService) {
+    public AuthController(AuthService userService) {
         this.userService = userService;
     }
 

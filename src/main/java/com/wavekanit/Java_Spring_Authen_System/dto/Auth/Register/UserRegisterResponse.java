@@ -1,4 +1,4 @@
-package com.wavekanit.Java_Spring_Authen_System.dto.Register;
+package com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register;
 
 import lombok.Getter;
 import lombok.Setter;

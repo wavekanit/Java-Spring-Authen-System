@@ -1,4 +1,4 @@
-package com.wavekanit.Java_Spring_Authen_System.dto.Register;
+package com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
