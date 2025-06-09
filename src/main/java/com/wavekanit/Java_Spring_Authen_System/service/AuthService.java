@@ -6,19 +6,33 @@ import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterReq
 import com.wavekanit.Java_Spring_Authen_System.dto.Auth.Register.UserRegisterResponse;
 import com.wavekanit.Java_Spring_Authen_System.model.UserModel;
 import com.wavekanit.Java_Spring_Authen_System.repository.UserRepository;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AuthService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserRegisterResponse registerUser(UserRegisterRequest payload) {
+        Optional<UserModel> existsUser = userRepository.findByUsername(payload.getUsername());
+        if (existsUser.isPresent()) {
+            return new UserRegisterResponse(
+                    payload.getUsername(),
+                    "username already exists"
+            );
+        }
         UserModel userModel = new UserModel(payload);
+
+        String hashedPassword = passwordEncoder.encode(userModel.getPassword());
+        userModel.setPassword(hashedPassword);
 
         UserModel savedUser = userRepository.save(userModel);
 
@@ -29,10 +43,16 @@ public class AuthService {
     }
 
     public UserLoginResponse loginUser(UserLoginRequest payload) {
-        UserModel loginUser = userRepository.findByUsername(payload.getUsername())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        UserModel loginUser = userRepository.findByUsername(payload.getUsername()).orElse(null);
+        if (loginUser == null) {
+            return new UserLoginResponse(
+                    payload.getUsername(),
+                    "login failed",
+                    401
+            );
+        }
 
-        if(!loginUser.getPassword().equals(payload.getPassword())) {
+        if (!passwordEncoder.matches(payload.getPassword(), loginUser.getPassword())) {
             return new UserLoginResponse(
                     payload.getUsername(),
                     "login failed",
