@@ -5,6 +5,8 @@ import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginResponse;
 import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
 import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterResponse;
 import com.wavekanit.Java_Spring_Authen_System.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,7 +29,13 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public UserLoginResponse loginUser(@RequestBody UserLoginRequest payload) {
-        return userService.loginUser(payload);
+    public ResponseEntity<UserLoginResponse> loginUser(@RequestBody UserLoginRequest payload) {
+        UserLoginResponse response = userService.loginUser(payload);
+
+        if (response.getStatusCode() == 401) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+
+        return ResponseEntity.ok(response);
     }
 }

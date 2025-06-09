@@ -35,13 +35,15 @@ public class UserService {
         if(!loginUser.getPassword().equals(payload.getPassword())) {
             return new UserLoginResponse(
                     payload.getUsername(),
-                    "login failed"
+                    "login failed",
+                    401
             );
         }
 
         return new UserLoginResponse(
                 payload.getUsername(),
-                "login successfully"
+                "login successfully",
+                200
         );
     }
 }

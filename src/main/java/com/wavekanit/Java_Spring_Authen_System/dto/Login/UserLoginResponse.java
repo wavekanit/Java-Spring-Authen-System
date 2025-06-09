@@ -10,9 +10,11 @@ import lombok.Setter;
 public class UserLoginResponse {
     private String username;
     private String message;
+    private int statusCode;
 
-    public UserLoginResponse(String username, String message) {
+    public UserLoginResponse(String username, String message, int statusCode) {
         this.username = username;
         this.message = message;
+        this.statusCode = statusCode;
     }
 }
