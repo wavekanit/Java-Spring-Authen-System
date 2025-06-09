@@ -1,5 +1,12 @@
 package com.wavekanit.Java_Spring_Authen_System.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserRegisterRequest {
     private String username;
     private String password;
@@ -7,30 +14,4 @@ public class UserRegisterRequest {
     private String lName;
     private String email;
     private String phone;
-
-//    public UserRegisterRequest() {}
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getfName() {
-        return fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
 }

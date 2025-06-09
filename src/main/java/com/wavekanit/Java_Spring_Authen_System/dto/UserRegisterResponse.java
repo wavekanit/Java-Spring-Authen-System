@@ -1,5 +1,10 @@
 package com.wavekanit.Java_Spring_Authen_System.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class UserRegisterResponse {
     private String username;
     private String status;
@@ -7,13 +12,5 @@ public class UserRegisterResponse {
     public UserRegisterResponse(String username, String status) {
         this.username = username;
         this.status = status;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getStatus() {
-        return status;
     }
 }
