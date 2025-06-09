@@ -8,7 +8,7 @@ import com.wavekanit.Java_Spring_Authen_System.model.UserModel;
 import com.wavekanit.Java_Spring_Authen_System.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.wavekanit.Java_Spring_Authen_System.util.JwtToken;
+import com.wavekanit.Java_Spring_Authen_System.security.JwtToken;
 
 import java.util.Optional;
 

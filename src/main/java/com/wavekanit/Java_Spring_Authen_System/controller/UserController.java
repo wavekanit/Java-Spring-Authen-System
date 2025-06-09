@@ -1,6 +1,8 @@
 package com.wavekanit.Java_Spring_Authen_System.controller;
 
+import com.wavekanit.Java_Spring_Authen_System.dto.User.GetUserByID.GetUserByIdResponse;
 import com.wavekanit.Java_Spring_Authen_System.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +15,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String getUserByID(@PathVariable Long id) {
-        return id + "accessed";
+    @PreAuthorize("principal.access >= 1")
+    public GetUserByIdResponse getUserByID(@PathVariable Long id) {
+        return userService.getUserByID(id);
     }
 }
