@@ -1,6 +1,6 @@
 package com.wavekanit.Java_Spring_Authen_System.model;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.Request;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +24,7 @@ public class UserModel {
     private String email;
     private String phone;
 
-    public UserModel(UserRegisterRequest payload) {
+    public UserModel(Request payload) {
         this.username = payload.getUsername();
         this.password = payload.getPassword();
         this.fName = payload.getFName();
