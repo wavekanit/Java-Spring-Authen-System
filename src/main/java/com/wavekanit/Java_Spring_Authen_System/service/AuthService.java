@@ -8,6 +8,7 @@ import com.wavekanit.Java_Spring_Authen_System.model.UserModel;
 import com.wavekanit.Java_Spring_Authen_System.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.wavekanit.Java_Spring_Authen_System.util.JwtToken;
 
 import java.util.Optional;
 
@@ -15,10 +16,12 @@ import java.util.Optional;
 public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtToken jwtToken;
 
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtToken jwtToken) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtToken = jwtToken;
     }
 
     public UserRegisterResponse registerUser(UserRegisterRequest payload) {
@@ -44,26 +47,22 @@ public class AuthService {
 
     public UserLoginResponse loginUser(UserLoginRequest payload) {
         UserModel loginUser = userRepository.findByUsername(payload.getUsername()).orElse(null);
-        if (loginUser == null) {
+        if (loginUser == null || !passwordEncoder.matches(payload.getPassword(), loginUser.getPassword())) {
             return new UserLoginResponse(
                     payload.getUsername(),
                     "login failed",
-                    401
+                    401,
+                    null
             );
         }
 
-        if (!passwordEncoder.matches(payload.getPassword(), loginUser.getPassword())) {
-            return new UserLoginResponse(
-                    payload.getUsername(),
-                    "login failed",
-                    401
-            );
-        }
+        String token = jwtToken.generateToken(loginUser);
 
         return new UserLoginResponse(
                 payload.getUsername(),
                 "login successfully",
-                200
+                200,
+                token
         );
     }
 }

@@ -11,10 +11,12 @@ public class UserLoginResponse {
     private String username;
     private String message;
     private int statusCode;
+    private String token;
 
-    public UserLoginResponse(String username, String message, int statusCode) {
+    public UserLoginResponse(String username, String message, int statusCode, String token) {
         this.username = username;
         this.message = message;
         this.statusCode = statusCode;
+        this.token = token;
     }
 }
