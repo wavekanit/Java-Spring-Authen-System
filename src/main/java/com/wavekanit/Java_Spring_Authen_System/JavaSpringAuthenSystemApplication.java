@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JavaSpringAuthenSystemApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(JavaSpringAuthenSystemApplication.class, args);
 	}
-
 }
