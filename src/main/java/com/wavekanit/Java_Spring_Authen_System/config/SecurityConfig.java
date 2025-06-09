@@ -12,11 +12,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**")) // ✅ disable csrf เฉพาะ h2
+                .csrf(csrf -> csrf.disable()) // ✅ disable csrf
                 .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin())) // ✅ for iframe (h2 UI)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // ✅ allow h2
-                        .anyRequest().permitAll() // ✅ allow ทุก request (ในตอนนี้)
+                        .requestMatchers(
+                                "/h2-console/**",    // ✅ allow h2 console
+                                "/api/user/**",      // ✅ allow auth path เช่น login, register
+                                "/public/**"         // ✅ allow public path
+                        ).permitAll()
+                        .anyRequest().authenticated() // ✅ allow ทุก request (ในตอนนี้)
                 );
 
         return http.build();
