@@ -13,7 +13,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String getUserByUsername(@PathVariable Long id) {
+    public String getUserByID(@PathVariable Long id) {
         return id + "accessed";
     }
 }
