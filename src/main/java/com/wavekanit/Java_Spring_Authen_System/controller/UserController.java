@@ -1,7 +1,7 @@
 package com.wavekanit.Java_Spring_Authen_System.controller;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.UserRegisterRequest;
-import com.wavekanit.Java_Spring_Authen_System.dto.UserRegisterResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterResponse;
 import com.wavekanit.Java_Spring_Authen_System.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

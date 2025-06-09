@@ -1,6 +1,6 @@
 package com.wavekanit.Java_Spring_Authen_System.model;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
