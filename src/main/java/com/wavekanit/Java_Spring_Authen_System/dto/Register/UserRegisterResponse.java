@@ -5,11 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Response {
+public class UserRegisterResponse {
     private String username;
     private String status;
 
-    public Response(String username, String status) {
+    public UserRegisterResponse(String username, String status) {
         this.username = username;
         this.status = status;
     }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Request {
+public class UserRegisterRequest {
     private String username;
     private String password;
     @JsonProperty("fName")

@@ -1,7 +1,9 @@
 package com.wavekanit.Java_Spring_Authen_System.controller;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.Request;
-import com.wavekanit.Java_Spring_Authen_System.dto.Register.Response;
+import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Login.UserLoginResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterRequest;
+import com.wavekanit.Java_Spring_Authen_System.dto.Register.UserRegisterResponse;
 import com.wavekanit.Java_Spring_Authen_System.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +22,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Response registerUser(@RequestBody Request payload) {
+    public UserRegisterResponse registerUser(@RequestBody UserRegisterRequest payload) {
         return userService.registerUser(payload);
+    }
+
+    @PostMapping("/login")
+    public UserLoginResponse loginUser(@RequestBody UserLoginRequest payload) {
+        return userService.loginUser(payload);
     }
 }
