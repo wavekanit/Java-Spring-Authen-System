@@ -23,6 +23,7 @@ public class UserModel {
     private String lName;
     private String email;
     private String phone;
+    private String access = "0";
 
     public UserModel(UserRegisterRequest payload) {
         this.username = payload.getUsername();
@@ -31,14 +32,5 @@ public class UserModel {
         this.lName = payload.getLName();
         this.email = payload.getEmail();
         this.phone = payload.getPhone();
-    }
-
-    public UserModel(String username, String password, String fName, String lName, String email, String phone) {
-        this.username = username;
-        this.password = password;
-        this.fName = fName;
-        this.lName = lName;
-        this.email = email;
-        this.phone = phone;
     }
 }
