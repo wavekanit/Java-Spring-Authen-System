@@ -19,8 +19,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/h2-console/**",    // ✅ allow h2 console
-                                "/api/user/**",      // ✅ allow auth path เช่น login, register
-                                "/public/**"         // ✅ allow public path
+                                "/api/auth/**"      // ✅ allow auth path เช่น login, register
                         ).permitAll()
                         .anyRequest().authenticated() // ✅ allow ทุก request (ในตอนนี้)
                 );
