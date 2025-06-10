@@ -1,9 +1,11 @@
 package com.wavekanit.Java_Spring_Authen_System.controller;
 
-import com.wavekanit.Java_Spring_Authen_System.dto.User.GetUserByID.GetUserByIdResponse;
+import com.wavekanit.Java_Spring_Authen_System.dto.User.GetUserResponse;
 import com.wavekanit.Java_Spring_Authen_System.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -14,9 +16,21 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     @PreAuthorize("principal.access >= 1")
-    public GetUserByIdResponse getUserByID(@PathVariable Long id) {
+    public GetUserResponse getUserByID(@PathVariable Long id) {
         return userService.getUserByID(id);
+    }
+
+    @GetMapping("/username/{username}")
+    @PreAuthorize("principal.access >= 1")
+    public GetUserResponse getUserByUsername(@PathVariable String username) {
+        return userService.getUserByUsername(username);
+    }
+
+    @GetMapping("/all")
+    @PreAuthorize("principal.access >= 1")
+    public List<GetUserResponse> getAllUsers() {
+        return userService.getAllUsers();
     }
 }

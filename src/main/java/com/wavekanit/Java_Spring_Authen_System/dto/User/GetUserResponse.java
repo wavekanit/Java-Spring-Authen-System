@@ -1,21 +1,21 @@
-package com.wavekanit.Java_Spring_Authen_System.dto.User.GetUserByID;
+package com.wavekanit.Java_Spring_Authen_System.dto.User;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class GetUserByIdResponse {
+public class GetUserResponse {
     private Long id;
     private String username;
     private String fName;
     private String lName;
     private String email;
     private String phone;
-    private String access;
+    private Integer access;
 
-    public GetUserByIdResponse(
-            Long id, String username, String fName, String lName, String email, String phone, String access
+    public GetUserResponse(
+            Long id, String username, String fName, String lName, String email, String phone, Integer access
     ) {
         this.id = id;
         this.username = username;

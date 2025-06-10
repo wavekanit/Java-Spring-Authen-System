@@ -23,7 +23,7 @@ public class UserModel {
     private String lName;
     private String email;
     private String phone;
-    private String access = "0";
+    private Integer access = 0;
 
     public UserModel(UserRegisterRequest payload) {
         this.username = payload.getUsername();
